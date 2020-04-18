@@ -1,6 +1,6 @@
 #Find Perfect number
 
-def EnumEvenTerms(num, res2 = [], progress=False):
+def EnumEvenTerms(num, res2 = [], progress=False, prog_step = 10000):
     res = []
     for i in range(num-1,0,-1):
         if(num%i==0):
@@ -12,19 +12,21 @@ def EnumEvenTerms(num, res2 = [], progress=False):
         except:
             pass
         
-        clear_output(wait=True)
-        print("\tNum "+str(num))
-        
-        for j in res2:
-            print("Num "+str(j[0])+": ",end="")
-            for i in j[1]:
-                print(i,end="")
-                if(i != res[-1]):
-                    print("+",end="")
-            print("")
-        
         if(sum(res)==num):
             res2.append( (num,res) )
+        
+        if(num % prog_step == 0 or sum(res)==num):
+            
+            clear_output(wait=True)
+            print("\tNum "+str(num))
+
+            for j in res2:
+                print("Num "+str(j[0])+": ",end="")
+                for i in j[1]:
+                    print(i,end="")
+                    if(i != res[-1]):
+                        print("+",end="")
+                print("")
     else:
         if(sum(res)==num):
             print("Num "+str(num)+": ",end="")
@@ -37,5 +39,5 @@ def EnumEvenTerms(num, res2 = [], progress=False):
     return res2
     
 mynumbers = []
-for i in range(1,9000):
+for i in range(1,90000000000000000000000000000000000000000000000000000000000000000000):
     mynumbers = EnumEvenTerms(i,mynumbers,True)
