@@ -1,10 +1,13 @@
 #Find Perfect number
 
-def EnumEvenTerms(num):
+def EnumEvenTerms(num, progress=False):
     res = []
     for i in range(num-1,0,-1):
         if(num%i==0):
             res.append(i)
+            
+    if(progress):
+        print("\tNum "+str(num))
 
     if(sum(res)==num):
         print("Num "+str(num)+": ",end="")
@@ -14,5 +17,5 @@ def EnumEvenTerms(num):
                 print("+",end="")
         print("")
             
-for i in range(1,1000):
-    EnumEvenTerms(i)
+for i in range(1,9000):
+    EnumEvenTerms(i,True)
