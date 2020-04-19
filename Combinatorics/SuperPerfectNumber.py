@@ -11,12 +11,8 @@ def SuperPerfect(n,m=2,k=2):
         m-=1    
     return sum(a) == k*num
 
-def findSuperPerfectNumbers(save=False,collect=0):
-    if(save):
-        global spns
-    else:
-        spns = []
-        
+def findSuperPerfectNumbers(collect=0):
+    spns = []
     try:
         from IPython.display import clear_output
     except:
@@ -29,7 +25,25 @@ def findSuperPerfectNumbers(save=False,collect=0):
         print(spns)
         if(SuperPerfect(collect)):
             spns.append(collect)
+            
+def findAllSuperPerfectNumbers(collect=0,mrange=20,krange=20):
+    spns = []
+    try:
+        from IPython.display import clear_output
+    except:
+        pass
 
+    while True:
+        collect+=1
+        for m in range(mrange):
+            for k in range(krange):
+                clear_output(wait=True)
+                print("n=",collect,",m=",m,",k=",k)
+                print("(n,m,k)")
+                print(spns)
+                
+                if(SuperPerfect(collect,m,k)):
+                    spns.append( (collect,m,k) )
 
-spns = []
-findSuperPerfectNumbers(True)
+#findSuperPerfectNumbers()
+#findAllSuperPerfectNumbers()
