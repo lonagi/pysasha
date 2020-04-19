@@ -24,7 +24,7 @@ def SociableNumber(num,returni=False,iteratDebug=False, NumDebug=False):
                 
         if(num==1):
             if(returni):
-                return (num,iterat)
+                return False
             break
         
         if(num1==num):
@@ -32,13 +32,24 @@ def SociableNumber(num,returni=False,iteratDebug=False, NumDebug=False):
                 return (num,iterat)
             break
             
+def doTest(toPrint=False,start=1,toEnd=10000):
+    _temp = 0
+    allNums = set()
+    for i in range(start,toEnd):
+        _temp = SociableNumber(i,True,True,True)
+        if(_temp != False):
+            if(_temp[0] == 1):
+                continue
+            else:
+                if(not toPrint):
+                    allNums.add(_temp)
+                else:
+                    print(_temp)
+                    
+    if(not toPrint):
+        return {tuple(sorted(item)) for item in allNums}
+            
 #SociableNumber(1264460,True,True,True)
-#SociableNumber(5,True,True,True)
-
-_temp = 0
-for i in range(1,1000000):
-    _temp = SociableNumber(i,True,True,True)
-    if(_temp[0] == 1):
-        continue
-    else:
-        print(_temp)
+#SociableNumber(27,True,True,True)
+print(doTest())
+#doTest(True)
