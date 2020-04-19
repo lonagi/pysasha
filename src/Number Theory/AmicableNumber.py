@@ -17,7 +17,7 @@ def AmicableNumber(k,returni=False):
         ##We search all divisors
         if(str(i) not in allDels):
             allDels[str(i)] = set([1])
-            for j in range(k-1,1,-1):
+            for j in range(int(k/2),1,-1):
                 if(i!=j and i%j==0):
                     allDels[str(i)].add(j)
 
