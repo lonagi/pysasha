@@ -26,7 +26,23 @@ def AmicableNumber(k,returni=False):
             if(returni):
                 return (k,i)
             else:
-                print(k,"->",i)    
+                print(k,"->",i)
+                
+def Formula_Sabita_ibn_Kurra(n):
+    def _isPrime(n):
+        if n % 2 == 0:
+            return n == 2
+        d = 3
+        while d * d <= n and n % d != 0:
+            d += 2
+        return d * d > n
+    
+    p = (3 * 2**(n-1)) - 1
+    q = (3 * 2**n) - 1
+    r = (9 * 2**(2*n-1))-1
+    
+    if(_isPrime(p) and _isPrime(q) and _isPrime(r)):
+        return ( 2**n * p * q, 2**n * r )
 
 def doTest(toPrint=False,start=2,toEnd=1000):
     allPairs = set()
@@ -42,4 +58,4 @@ def doTest(toPrint=False,start=2,toEnd=1000):
         return {tuple(sorted(item)) for item in allPairs}
                 
 #AmicableNumber(220)
-doTest(True)
+#doTest(True)
