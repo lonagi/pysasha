@@ -1,2 +1,2 @@
 # pysasha
-Python Math Tasks by Perfect Sasha
+Python Math by Perfect Alexandr
