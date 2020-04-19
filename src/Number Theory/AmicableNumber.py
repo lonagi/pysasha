@@ -28,14 +28,18 @@ def AmicableNumber(k,returni=False):
             else:
                 print(k,"->",i)    
 
-#AmicableNumber(220)
+def doTest(toPrint=False,start=2,toEnd=1000):
+    allPairs = set()
+    _temp = 0
+    for i in range(start,toEnd):
+        _temp = AmicableNumber(i,True)
+        if(_temp != None):
+            allPairs.add(_temp)
+
+    if(toPrint):
+        print({tuple(sorted(item)) for item in allPairs})
+    else:
+        return {tuple(sorted(item)) for item in allPairs}
                 
-allPairs = set()
-_temp = 0
-for i in range(2,285):
-    _temp = AmicableNumber(i,True)
-    if(_temp != None):
-        allPairs.add(_temp)
-        
-allPairs = {tuple(sorted(item)) for item in allPairs}
-print(allPairs)
+#AmicableNumber(220)
+doTest(True)
