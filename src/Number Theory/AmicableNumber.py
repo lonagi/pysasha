@@ -27,28 +27,41 @@ def AmicableNumber(k,returni=False):
                 return (k,i)
             else:
                 print(k,"->",i)
+
+def _isPrime(n):
+    if n % 2 == 0:
+        return n == 2
+    d = 3
+    while d * d <= n and n % d != 0:
+        d += 2
+    return d * d > n                
                 
-def Formula_Sabita_ibn_Kurra(n):
-    def _isPrime(n):
-        if n % 2 == 0:
-            return n == 2
-        d = 3
-        while d * d <= n and n % d != 0:
-            d += 2
-        return d * d > n
-    
+def Formula_Sabita_ibn_Kurra(n):    
     p = (3 * 2**(n-1)) - 1
     q = (3 * 2**n) - 1
     r = (9 * 2**(2*n-1))-1
     
     if(_isPrime(p) and _isPrime(q) and _isPrime(r)):
         return ( 2**n * p * q, 2**n * r )
+    
+def Walter_Borough(n,A=220,a=4,u=55,s=71):
+    p = s+u+1
+    q1 = (u+1)*p**n - 1
+    if(_isPrime(q1)):
+        q2 = (u+1)*(s+1)*p**n - 1
+        if(_isPrime(q2)):   
+            return ( A*p**n *q1, a*p**n *q2 )
 
-def doTest(toPrint=False,start=2,toEnd=1000):
+def doTest(toPrint=False,start=2,toEnd=1000,algo="bf"):
     allPairs = set()
     _temp = 0
     for i in range(start,toEnd):
-        _temp = AmicableNumber(i,True)
+        
+        if(algo=="bf"):
+            _temp = AmicableNumber(i,True)
+        elif(algo=="Walter_Borough"):
+            _temp = Walter_Borough(i)
+        
         if(_temp != None):
             allPairs.add(_temp)
 
@@ -59,3 +72,4 @@ def doTest(toPrint=False,start=2,toEnd=1000):
                 
 #AmicableNumber(220)
 #doTest(True)
+#doTest(True,2,46,"Walter_Borough")
