@@ -1,11 +1,11 @@
 #Amicable numbers
 
-#Brute force Method
+##Brute force Method
 def AmicableNumber(k,returni=False):  
     ##All divisors for all numbers
     allDels = dict()
     
-    ##Second number is greater than first number
+    ###Second number is greater than first number
     try:
         from itertools import chain
     except:
@@ -13,11 +13,11 @@ def AmicableNumber(k,returni=False):
     concatenated = chain( range(k, int(k*2.5)+1 ),range(k, int(k/3)+1 ,-1) )
     for i in concatenated:
 
-        ##We don't want repeat operations
-        ##We search all divisors
+        ###We don't want repeat operations
+        ###Therefore search and save all divisors
         if(str(i) not in allDels):
             allDels[str(i)] = set([1])
-            for j in range(int(k/2),1,-1):
+            for j in range(int(k/2+1),1,-1):
                 if(i!=j and i%j==0):
                     allDels[str(i)].add(j)
 
