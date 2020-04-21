@@ -4,7 +4,7 @@ def HarshadNumber(num):
         sum+=int(i)
     return num % sum==0
 
-def doTest(toPrint=False,toProgress=False,start=2,toEnd=1000):
+def doTest(toPrint=False,toProgress=False,start=9,toEnd=1000):
     s = set()
     KK = 10000
     for i in range(start,toEnd+1):

@@ -1,5 +1,6 @@
 #DO YOU WANT TO FIND ODD PERFECT NUMBER?????????????
 #m - almost perfect number
+#n - Descartes number
 
 startPower = 300
 endPower = 500000

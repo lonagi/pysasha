@@ -15,8 +15,9 @@ def PerfectNumber(num):
              
 def doTest(toPrint=False,isPerfect=True,toProgress=False,start=2,toEnd=1000):
     s = set()
+    KK = 10000
     for i in range(start,toEnd):
-        if(toProgress and i % 100 == 0):
+        if(toProgress and ( i < KK or (i>=KK and i % (KK/100) == 0)) ):
             try:
                 from IPython.display import clear_output
             except:
@@ -27,9 +28,10 @@ def doTest(toPrint=False,isPerfect=True,toProgress=False,start=2,toEnd=1000):
             s.add(i)
             if(toPrint and not toProgress):
                 print(i,end=", ")
-        if(toProgress and i % 100 == 0):
+        if(toProgress and ( i < KK or (i>=KK and i % (KK/100) == 0)) ):
             print(s)
-    return s
+    if(not toPrint):
+        return s
             
 doTest(True,True,True,2,20000) #All perfect numbers
 print("")
