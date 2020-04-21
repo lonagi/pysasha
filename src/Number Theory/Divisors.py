@@ -2,7 +2,8 @@
 
 def Divisors(num):
     s = set([1])
-    for i in range( int(num/2 + 1),1,-1):
+    z=int(num/2 + 1)
+    for i in range(z,1,-1):
         if(i!=num and num%i==0):
             s.add(i)
     return s
