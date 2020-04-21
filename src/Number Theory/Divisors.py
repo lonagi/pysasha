@@ -3,7 +3,7 @@
 def Divisors(num):
     s = set([1])
     for i in range( int(num/2 + 1),1,-1):
-        if(num%i==0):
+        if(i!=num and num%i==0):
             s.add(i)
     return s
 
