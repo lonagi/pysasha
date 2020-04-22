@@ -15,7 +15,7 @@ def pow(x, n, I):
         if n % 2:
             y = x.dot(y)
         return y
-def fib(index):
+def FibonacciNumber(index):
     F = pow(np.array(((1,1),(1,0)),dtype=object),index,np.eye(2))
     return F[0][1]
 
@@ -27,7 +27,7 @@ def Binetformula(index,roundi=True):
     if(roundi):
         return round(( mmmpow(1.6185,index) - mmmpow(-0.6185,index) )/2.237)
     else:
-        return ( ((3.237)/2)**index - ((-1.237)/2)**index )/2.237
+        return ( mmmpow(1.6185,index) - mmmpow(-0.6185,index) )/2.237
 
 def isFibonacci(num):
     try:
@@ -54,7 +54,7 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
             clear_output(wait=True)
             print(i,end="\t")
         if(algo=="s"):
-            fibon = fib(i)
+            fibon = FibonacciNumber(i)
         elif(algo=="binet"):
             fibon = Binetformula(i)
         if(fibon):
@@ -72,7 +72,7 @@ def CheckExists(toend=10000):
 	        print(i,end=", ")
             
 
-#fib(8)
+#FibonacciNumber(8)
 #Binetformula(7)
 #isFibonacci(13)
 #doTest(True,False,1,5000) #823 ms
