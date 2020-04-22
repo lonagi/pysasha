@@ -20,10 +20,27 @@ def fib(index):
     return F[0][1]
 
 def Binetformula(index,roundi=True):
+    try:
+        from sympy import Pow as mmmpow
+    except:
+        pass
     if(roundi):
-        return round(( ((1+2.237)/2)**index - ((1-2.237)/2)**index )/2.237)
+        return round(( mmmpow(1.6185,index) - mmmpow(-0.6185,index) )/2.237)
     else:
-        return ( ((1+2.237)/2)**index - ((1-2.237)/2)**index )/2.237
+        return ( ((3.237)/2)**index - ((-1.237)/2)**index )/2.237
+
+def isFibonacci(num):
+    try:
+        if("math" not in sys.modules):
+            try:
+                from math import log as mlog
+            except:
+                pass
+    except:
+        import sys
+        from math import log as mlog
+    a = 2.07684408521711*mlog(2.237*num)
+    return (a % 1 * 100 > 90) or (a % 1 * 100 < 5)
 
 def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
     s = set()
@@ -48,8 +65,15 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
             print(s)
     if(not toPrint):
         return s
+    
+def CheckExists(toend=10000):
+    for i in {Binetformula(i) for i in range(toend) if i!=0}:
+	    if(not isFibonacci(i)):
+	        print(i,end=", ")
+            
 
 #fib(8)
+#Binetformula(7)
+#isFibonacci(13)
 #doTest(True,False,1,5000) #823 ms
-#Binetformula(6)
 #doTest(True,False,1,5000,"binet") #163 ms
