@@ -1,11 +1,16 @@
 #Functions of divisors
 
-def Divisors(num):
-    s = set([1])
-    z=int(num/2 + 1)
-    for i in range(z,1,-1):
-        if(i!=num and num%i==0):
-            s.add(i)
+def Divisors(num) : 
+    s=set()
+    i = 1
+    a = num**(1/2)
+    while i <= a: 
+        if (num % i == 0) : 
+            if (num / i == i) : 
+                s.add(i)
+            else : 
+                s.add(i)
+        i += 1
     return s
 
 #the number of the divisors of number
