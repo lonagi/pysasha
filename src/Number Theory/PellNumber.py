@@ -27,6 +27,14 @@ def Binetformula(index,roundi=True):
     q = 2**(1/2)
     if(roundi):
         return round(( mmmpow(1+q ,index) - mmmpow(1-q,index) )/(2*q))
+    else:
+        return ( mmmpow(1+q ,index) - mmmpow(1-q,index) )/(2*q)
+
+def CompanionPellNumber(Pell,roundi=True):
+    if(roundi):
+        return round(Pell * (2**(1/2)))
+    else:
+        return round(Pell * (2**(1/2)))
 
 def PellNumbers(toEnd):
     import time
@@ -53,6 +61,8 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
             pell = PellNumber(i)
         elif(algo=="binet"):
             pell = Binetformula(i)
+        elif(algo=="companion"):
+            pell = CompanionPellNumber(Binetformula(i))
         if(pell):
             s.add(pell)
             if(toPrint and not toProgress):
