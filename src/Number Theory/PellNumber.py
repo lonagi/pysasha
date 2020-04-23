@@ -40,8 +40,12 @@ def CompanionPellLucasNumber(Pell,roundi=True):
         return r
 
 def CompanionPellNumber(index,roundi=True):
+    try:
+        from sympy import Pow as mmmpow
+    except:
+        pass
     q = 2**(1/2)
-    r = ((1+q)**index + (1-q)**index)/2
+    r = ( mmmpow(1+q ,index) - mmmpow(1-q,index) )/(2)
     if(roundi):
         return round(r)
     else:
