@@ -13,18 +13,6 @@ def Binetformula(index,roundi=True):
         return round(r)
     else:
         return r
-
-def CompanionPellNumber(index,roundi=True):
-    try:
-        from sympy import Pow as mmmpow
-    except:
-        pass
-    q = 2**(1/2)
-    r = ( mmmpow(1+q ,index) - mmmpow(1-q,index) )/(2)
-    if(roundi):
-        return round(r)
-    else:
-        return r
 ############################################
     
 #Brut Force for all numbers
@@ -55,25 +43,27 @@ def _tfsqtn(toEnd=30):
         
 #Pythagorean triples from Square triangular numbers with H
 def _tfsqtn2(toEnd=30):
+    q = 2**(1/2)
     for n in range(1,toEnd):
-        a1 = (CompanionPellNumber(2*n+1,False)-1)//2
+        a1 = ((Binetformula(2*n+1,False)-1)*q)//2
         a2 = a1+1
         c = int((a1**2 + a2**2)**(1/2))
         print(a1,a2,c)
         
 #Triangular numbers
 def _trnums(toEnd=30):
+    q = 2**(1/2)
     for n in range(1,toEnd):
         if(n%2==0):
             t = 2 * Binetformula(n)**2
         else:
-            t = CompanionPellNumber(n)**2
+            t = (Binetformula(n)**2)*q
         s = ((t*(t+1))/2)**(1/2)
         print(int(t),int(t)+1,int(s))
         
 #_bf(5000000)
 
-#_tfsqrn(1000) #5.06s
+#_tfsqtn(1000) #5.06s
 #_bfsqr([Binetformula(i) for i in range(1000) if(i%2!=0 and i!=1)]) #2.42s
 #_tfsqtn2(1000) #111ms
 
