@@ -25,24 +25,27 @@ def Binetformula(index,roundi=True):
     except:
         pass
     q = 2**(1/2)
+    r = ( mmmpow(1+q ,index) - mmmpow(1-q,index) )/(2*q)
     if(roundi):
-        return round(( mmmpow(1+q ,index) - mmmpow(1-q,index) )/(2*q))
+        return round(r)
     else:
-        return ( mmmpow(1+q ,index) - mmmpow(1-q,index) )/(2*q)
+        return r
 
 #Pell–Lucas
 def CompanionPellLucasNumber(Pell,roundi=True):
+    r = Pell * (2**(1/2))
     if(roundi):
-        return round(Pell * (2**(1/2)))
+        return round(r)
     else:
-        return Pell * (2**(1/2))
+        return r
 
 def CompanionPellNumber(index,roundi=True):
     q = 2**(1/2)
+    r = ((1+q)**index + (1-q)**index)/2
     if(roundi):
-        return round(((1+q)**index + (1-q)**index)/2)
+        return round(r)
     else:
-        return ((1+q)**index + (1-q)**index)/2
+        return r
 
 def PellNumbers(toEnd):
     import time
