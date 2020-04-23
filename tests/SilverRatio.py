@@ -8,21 +8,28 @@ def Binetformula(index,roundi=True):
     except:
         pass
     q = 2**(1/2)
+    r = ( mmmpow(1+q ,index) - mmmpow(1-q,index) )/(2*q)
     if(roundi):
-        return round(( mmmpow(1+q ,index) - mmmpow(1-q,index) )/(2*q))
+        return round(r)
     else:
-        return ( mmmpow(1+q ,index) - mmmpow(1-q,index) )/(2*q)
+        return r
 
-def CompanionPellNumber(Pell,roundi=True):
+def CompanionPellNumber(index,roundi=True):
+    try:
+        from sympy import Pow as mmmpow
+    except:
+        pass
+    q = 2**(1/2)
+    r = ( mmmpow(1+q ,index) - mmmpow(1-q,index) )/(2)
     if(roundi):
-        return round(Pell * (2**(1/2)))
+        return round(r)
     else:
-        return round(Pell * (2**(1/2)))
+        return r
     
 s = set()
 for i in range(100):
     a = sp.Float(Binetformula(i,False))
-    b = sp.Float(CompanionPellNumber(a))
+    b = sp.Float(CompanionPellNumber(i))
     c = b+a*(2**(1/2))
     print(c, end=", ")
     s.add(c)
