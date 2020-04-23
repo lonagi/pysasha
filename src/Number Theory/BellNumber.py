@@ -9,13 +9,23 @@ def BellNumber(index):
             bell[i][j] = bell[i-1][j-1] + bell[i][j-1] 
     return bell[index][0]
 
-def _BellNumber(index,dps=30):
+def MPmath(index,dps=30):
     try:
         import mpmath
     except:
         pass
     mpmath.mp.dps = dps
     return int(mpmath.bell(index))
+
+def DobinskiFormula(n):
+    try:
+        import math
+    except:
+        pass
+    try:
+        return round((1/math.e) * sum([(k**(n))/(math.factorial(k)) for k in range(1,1000)]))
+    except:
+        return "inf"
     
 def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
     s = set()
@@ -31,7 +41,9 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
         if(algo=="s"):
             bell = BellNumber(i)
         elif(algo=="mpmath"):
-            bell = _BellNumber(i)
+            bell = MPmath(i)
+        elif(algo=="dobinski"):
+            bell = DobinskiFormula(i)
         if(bell):
             s.add(bell)
             if(toPrint and not toProgress):
@@ -42,6 +54,8 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
         return s
   
 #BellNumber(2000)
-#_BellNumber(2000,dps)
+#MPmath(2000)
+#DobinskiFormula(4)
 #doTest(False,False,1,500) #7.97s
+#doTest(False,False,1,500,"dobinski") #2.95s
 #doTest(False,False,1,500,"mpmath") #1.73s
