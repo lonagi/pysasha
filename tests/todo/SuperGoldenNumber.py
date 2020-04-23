@@ -4,7 +4,7 @@ def SuperGoldenNumber(n=1):
 
 def SuperGoldenRatio(toEnd=100):
     pp = (1 + ((29 + 3 * (93**(1/2)))/2)**(1/3) + ((29 - 3 * (93**(1/2)))/2)**(1/3))/3
-    for i in range(toEnd):
+    for i in range(1,toEnd):
         a = i*pp
         if(a%1 *100 <10):
             print(int(a),"/",i,end=', ')
