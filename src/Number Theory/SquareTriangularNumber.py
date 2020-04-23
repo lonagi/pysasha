@@ -1,13 +1,19 @@
 #Find Square triangular numbers
 
-def SquareTriangularNumber(k,roundi=True):
-    r = ((((3 + 2 * (2)**(1/2))**(k))-((3 - 2 * (2)**(1/2))**(k)))/(4 * (2)**(1/2)))**2
+#Square Triangular Number by Euler Formula
+def SquareTriangularNumber(k,res="N",roundi=True):
+    if(res=="N"):
+        r=((((3 + 2 * (2)**(1/2))**(k))-((3 - 2 * (2)**(1/2))**(k)))/(4 * (2)**(1/2)))**2
+    elif(res=="t"):
+        r=(((3 + 2 * (2)**(1/2))**(k))-((3 - 2 * (2)**(1/2))**(k)) - 2)/(4)
+    elif(res=="s"):
+        r=(((3 + 2 * (2)**(1/2))**(k))-((3 - 2 * (2)**(1/2))**(k)))/(4 * (2)**(1/2))
     if(roundi):
         return round(r)
     else:
         return r
 
-def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
+def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="euler"):
     s = set()
     KK = 10000
     for i in range(start,toEnd+1):
@@ -18,8 +24,12 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
                 pass
             clear_output(wait=True)
             print(i,end="\t")
-        if(algo=="s"):
+        if(algo=="euler"):
             sqrnn = SquareTriangularNumber(i)
+        if(algo=="t"):
+            sqrnn = SquareTriangularNumber(i,"t")
+        if(algo=="s"):
+            sqrnn = SquareTriangularNumber(i,"s")
         if(sqrnn):
             s.add(sqrnn)
             if(toPrint and not toProgress):
@@ -31,3 +41,6 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
     
 #SquareTriangularNumber(2)
 #doTest(True,True,0,100)
+#SquareTriangularNumber(3,"s")
+#sorted(doTest(False,False,0,100,"t"))
+#sorted(doTest(False,False,0,100,"s"))
