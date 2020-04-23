@@ -1,10 +1,13 @@
+def getGoldenRatio():
+    return((5**(1/2)) + 1)/2
+
 def GoldenNumber(index=1,Pair=False,roundi=True):
     try:
         from sympy import Pow as mmmpow
     except:
         pass
     q = 5**(1/2)
-    pp = (q + 1)/2
+    pp = getGoldenRatio()
     r = ((mmmpow(pp,index) - mmmpow(-pp,-index))/q)
     if(roundi):
         if(Pair):
@@ -19,7 +22,7 @@ def GoldenNumber(index=1,Pair=False,roundi=True):
     
 #Companion Golden Number
 def NextGoldenNumber(Golden,Pair=False,roundi=True):
-    r=Golden*((5**(1/2) + 1)/2)
+    r=Golden*getGoldenRatio()
     if(roundi):
         if(Pair):
             return (Golden,round(r))
@@ -31,8 +34,8 @@ def NextGoldenNumber(Golden,Pair=False,roundi=True):
         else:
             return r
 
-def GoldenRatio(toEnd=100):
-    pp = (5**(1/2) + 1)/2
+def GoldenFractions(toEnd=100):
+    pp = getGoldenRatio()
     for i in range(1,toEnd):
         a = i*pp
         if(a%1 *100 <10):

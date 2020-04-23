@@ -19,7 +19,7 @@ def PellNumber(index):
     F = pow(np.array(((2,1),(1,0)),dtype=object),index,np.eye(2))
     return F[0][1]
 
-def Binetformula(index,roundi=True):
+def Binetformula(index=1,roundi=True):
     try:
         from sympy import Pow as mmmpow
     except:
@@ -39,7 +39,7 @@ def CompanionPellLucasNumber(Pell,roundi=True):
     else:
         return r
 
-def CompanionPellNumber(index,roundi=True):
+def CompanionPellNumber(index=1,roundi=True):
     try:
         from sympy import Pow as mmmpow
     except:
