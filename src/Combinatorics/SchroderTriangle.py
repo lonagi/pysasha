@@ -1,12 +1,11 @@
 #Find Schröder Numbers
 
-#Schroder Sequence by triangular
 def getSchroderTriangle(n=5):
     colk = [k for k in range(n+1)]
     a=[[ 1 if(j==0) else 0 for j in colk] for i in colk]
     a[1][1]=2
     for i in range(1,n+1):
-        for j in range(i+1):
+        for j in range(1,i+1):
             a[i][j] = a[i][j-1]+a[i-1][j-1]+a[i-1][j]
     
     return a
