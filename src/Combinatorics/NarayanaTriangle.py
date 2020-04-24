@@ -1,13 +1,19 @@
 #Find Narayana Numbers
 
 def NarayanaNumbers(n,k):
-    try:
-        from math import factorial as mmfac
-        from sympy import Float as mmmfloat
-    except:
-        pass
+    from math import factorial as mmfac
+    from sympy import Float as mmmfloat
+    from sympy import Integer as mmmint
     
-    return mmmfloat((((mmfac(n))/((mmfac(k-1)) * (mmfac(n-k+1))))/n)*(mmfac(n)/((mmfac(k)*(mmfac(n-k))))))
+    def _autoFloat(f):
+        from math import log10 as mloggg
+        digits = (mloggg(f))+1
+        if(digits>15):
+            return mmmfloat(f)
+        else:
+            return mmmint(f)
+    
+    return _autoFloat((((mmfac(n))/((mmfac(k-1)) * (mmfac(n-k+1))))/n)*(mmfac(n)/((mmfac(k)*(mmfac(n-k))))))
 
 def printSequence(countt=10):
     for k in range(1,countt):
@@ -31,4 +37,4 @@ def NarayanaTriangle(countt=10):
 
 #NarayanaNumbers(7,2)            
 #printSequence(100)
-NarayanaTriangle(1000)
+NarayanaTriangle(300)
