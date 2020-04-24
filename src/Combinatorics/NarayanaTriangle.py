@@ -34,11 +34,8 @@ def NarayanaTriangle(countt=10):
         for n in range(k,countt+1):
             s[n-1][k-1] = NarayanaNumber(n,k)
             pass
-    try:
-        import pandas as mmpd
-    except:
-        pass
-    df = mmpd.DataFrame(s, columns=colk, index=colk)
+    from pandas import DataFrame as mmpd
+    df = mmpd(s, columns=colk, index=colk)
     df =df.rename_axis(columns="n/k")
     return df
 
