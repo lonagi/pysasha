@@ -19,7 +19,7 @@ def LucasSequence(countt,returni=True):
         print(s)
 
 def isPrime_Lucas(p):
-    l = LucasNumber(p+1)
+    l = LucasNumber(p)
     if((l-1)%p!=0):
         return l
 
@@ -51,4 +51,4 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
 #doTest(True,False,0,800) #1.69 s
 #LucasSequence(800) #30 ms
 #isPrime_Lucas(3)
-#doTest(True,False,1,1000,"prime")
+#doTest(False,False,1,10000,"prime")
