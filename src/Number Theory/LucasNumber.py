@@ -8,13 +8,14 @@ def LucasNumber(index,roundi=True):
     else:
         return b
 
-def LucasSequence(index,returni=False):
-    from sympy import Pow as mmmpow
-    b = (mmmpow(((1+5**(1/2))/2),index))+(mmmpow(((1-5**(1/2))/2),index))
-    if(roundi):
-        return round(b)
+def LucasSequence(countt,returni=True):
+    s = [2,1]
+    for n in range(2,countt):
+        s.append(s[n-1]+s[n-2])
+    if(returni):
+        return s
     else:
-        return b
+        print(s)
     
 def isLucas(num):
     try:
@@ -55,4 +56,5 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
         return s
                 
 #LucasNumber(0)
-#doTest(True,False,0,200)
+#doTest(True,False,0,800) #1.69 s
+#LucasSequence(800) #30 ms
