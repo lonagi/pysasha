@@ -3,10 +3,11 @@
 def NarayanaNumbers(n,k):
     try:
         from math import factorial as mmfac
+        from sympy import Float as mmmfloat
     except:
         pass
     
-    return int((((mmfac(n))/((mmfac(k-1)) * (mmfac(n-k+1))))/n)*(mmfac(n)/((mmfac(k)*(mmfac(n-k))))))
+    return mmmfloat((((mmfac(n))/((mmfac(k-1)) * (mmfac(n-k+1))))/n)*(mmfac(n)/((mmfac(k)*(mmfac(n-k))))))
 
 def printSequence(countt=10):
     for k in range(1,countt):
@@ -30,4 +31,4 @@ def NarayanaTriangle(countt=10):
 
 #NarayanaNumbers(7,2)            
 #printSequence(100)
-NarayanaTriangle(10)
+NarayanaTriangle(1000)
