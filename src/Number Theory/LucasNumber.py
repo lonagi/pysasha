@@ -2,9 +2,10 @@
 
 def LucasNumber(index,roundi=True):
     from sympy import Pow as mmmpow
+    from sympy import Integer as mmmint
     b = (mmmpow(((1+5**(1/2))/2),index))+(mmmpow(((1-5**(1/2))/2),index))
     if(roundi):
-        return round(b)
+        return mmmint(b)
     else:
         return b
 
@@ -16,22 +17,11 @@ def LucasSequence(countt,returni=True):
         return s
     else:
         print(s)
-    
-def isLucas(num):
-    try:
-        if("math" not in sys.modules):
-            try:
-                from math import log as mlog
-            except:
-                pass
-    except:
-        import sys
-        from math import log as mlog
-    a = 2.07684408521711*mlog(2.237*num)
-    return (a % 1 * 100 > 90) or (a % 1 * 100 < 5)
 
-def isPrime_Lucas(num):
-    pass
+def isPrime_Lucas(p):
+    l = LucasNumber(p+1)
+    if((l-1)%p!=0):
+        return l
 
 def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
     s = set()
@@ -46,6 +36,8 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
             print(i,end="\t")
         if(algo=="s"):
             lucas = LucasNumber(i)
+        elif(algo=="prime"):
+            lucas = isPrime_Lucas(i)
         if(lucas):
             s.add(lucas)
             if(toPrint and not toProgress):
@@ -58,3 +50,5 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
 #LucasNumber(0)
 #doTest(True,False,0,800) #1.69 s
 #LucasSequence(800) #30 ms
+#isPrime_Lucas(3)
+#doTest(True,False,1,1000,"prime")

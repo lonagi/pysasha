@@ -20,14 +20,13 @@ def FibonacciNumber(index):
     return F[0][1]
 
 def Binetformula(index,roundi=True):
-    try:
-        from sympy import Pow as mmmpow
-    except:
-        pass
+    from sympy import Pow as mmmpow
+    from sympy import Integer as mmmint
+    b = ( mmmpow(1.6185,index) - mmmpow(-0.6185,index) )/2.237
     if(roundi):
-        return round(( mmmpow(1.6185,index) - mmmpow(-0.6185,index) )/2.237)
+        return mmmint(b)
     else:
-        return ( mmmpow(1.6185,index) - mmmpow(-0.6185,index) )/2.237
+        return b
 
 def isFibonacci(num):
     try:
