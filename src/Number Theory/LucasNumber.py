@@ -29,14 +29,11 @@ def isPrime_Lucas(p,returnNums=True,roundi=True):
     return False
 
 def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
-    s = set()
-    KK = 10000
+    s=set()
+    KK=10000
+    from IPython.display import clear_output
     for i in range(start,toEnd+1):
-        if(toProgress and ( i < KK or (i>=KK and i % (KK/100) == 0)) ):
-            try:
-                from IPython.display import clear_output
-            except:
-                pass
+        if(toProgress and (i<KK or (i>=KK and i%(KK/100)==0))):
             clear_output(wait=True)
             print(i,end="\t")
         if(algo=="s"):
@@ -47,7 +44,7 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
             s.add(lucas)
             if(toPrint and not toProgress):
                 print(lucas,end=", ")
-        if(toProgress and ( i < KK or (i>=KK and i % (KK/100) == 0)) ):
+        if(toProgress and (i<KK or (i>=KK and i%(KK/100)==0))):
             print(s)
     if(not toPrint):
         return s

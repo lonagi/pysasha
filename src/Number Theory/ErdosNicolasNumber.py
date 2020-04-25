@@ -16,14 +16,14 @@ def Divisors(num):
 def PerfectNumber(num):
     return sum(Divisors(num))==num
 
-#
+#######################################
 ##THE PROGRAM
 def ErdosNicolas_Number(num):
     if(not PerfectNumber(num)):
-        s = list(Divisors(num))
+        s=list(Divisors(num))
         s.sort()
         for i in s:
-            if(sum(s) < num):
+            if(sum(s)<num):
                 break
             elif(sum(s)==num):
                 return True
