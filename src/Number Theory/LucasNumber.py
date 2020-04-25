@@ -18,8 +18,8 @@ def LucasSequence(countt,returni=True):
     else:
         print(s)
 
-def isPrime_Lucas(p):
-    l = LucasNumber(p)
+def isPrime_Lucas(p,roundi=True):
+    l = LucasNumber(p,roundi)
     if((l-1)%p!=0):
         return l
 
