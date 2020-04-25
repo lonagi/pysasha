@@ -4,7 +4,7 @@ def LucasNumber(index,roundi=True):
     from sympy import Pow as mmmpow
     from sympy import Integer as mmmint
     b = (mmmpow(((1+5**(1/2))/2),index))+(mmmpow(((1-5**(1/2))/2),index))
-    if(roundi):
+    if(not roundi):
         return mmmint(b)
     else:
         return b
@@ -50,5 +50,5 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
 #LucasNumber(0)
 #doTest(True,False,0,800) #1.69 s
 #LucasSequence(800) #30 ms
-#isPrime_Lucas(3)
+#isPrime_Lucas(10)
 #doTest(False,False,1,10000,"prime")
