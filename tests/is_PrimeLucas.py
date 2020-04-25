@@ -19,4 +19,4 @@ def isPrime_Lucas(p,returnNums=True,roundi=True):
 
 with open("file","r") as f:
     a=f.read()
-print(isPrime_Lucas((a),False))
+print(isPrime_Lucas(int(a),False))

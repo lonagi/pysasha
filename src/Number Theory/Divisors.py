@@ -1,16 +1,17 @@
 #Functions of divisors
 
-def Divisors(num) : 
+#Find All divisors for your number
+def Divisors(num): 
     s=set()
-    i = 1
-    a = num**(1/2)
-    while i <= a: 
-        if (num % i == 0) : 
-            if (num / i == i) : 
+    i=1
+    a=num**(1/2)
+    while i<=a: 
+        if (num%i==0): 
+            if (num/i==i): 
                 s.add(i)
-            else : 
+            else: 
                 s.add(i)
-        i += 1
+        i+=1
     return s
 
 #the number of the divisors of number
@@ -25,6 +26,6 @@ def SumOfDivisors(num):
 def aSumOfDivisors(num):
     return sum(Divisors(num))
     
-print(NumberOfDivisors(12)) #6
-print(SumOfDivisors(12))    #28
-print(aSumOfDivisors(12))   #16
+#print(NumberOfDivisors(12)) #6
+#print(SumOfDivisors(12))    #28
+#print(aSumOfDivisors(12))   #16
