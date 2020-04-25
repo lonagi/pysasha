@@ -1,11 +1,12 @@
 def LucasNumber(index,roundi=True):
     from sympy import Pow as mmmpow
     from sympy import Integer as mmmint
+    from sympy import N as mmmrat
     b = (mmmpow(((1+5**(1/2))/2),index))+(mmmpow(((1-5**(1/2))/2),index))
     if(not roundi):
         return mmmint(b)
     else:
-        return int(b)
+        return mmmrat(b)
 
 def isPrime_Lucas(p,returnNums=True,roundi=True):
     l = LucasNumber(p,roundi)
@@ -18,4 +19,4 @@ def isPrime_Lucas(p,returnNums=True,roundi=True):
 
 with open("file","r") as f:
     a=f.read()
-print(isPrime_Lucas(int(a),False))
+print(isPrime_Lucas((a),False))

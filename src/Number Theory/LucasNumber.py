@@ -3,11 +3,12 @@
 def LucasNumber(index,roundi=True):
     from sympy import Pow as mmmpow
     from sympy import Integer as mmmint
+    from sympy import N as mmmrat
     b = (mmmpow(((1+5**(1/2))/2),index))+(mmmpow(((1-5**(1/2))/2),index))
     if(not roundi):
         return mmmint(b)
     else:
-        return int(b)
+        return mmmrat(b)
 
 def LucasSequence(countt,returni=True):
     s = [2,1]
