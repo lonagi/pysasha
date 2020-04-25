@@ -7,7 +7,7 @@ def LucasNumber(index,roundi=True):
     if(not roundi):
         return mmmint(b)
     else:
-        return b
+        return int(b)
 
 def LucasSequence(countt,returni=True):
     s = [2,1]
@@ -18,10 +18,14 @@ def LucasSequence(countt,returni=True):
     else:
         print(s)
 
-def isPrime_Lucas(p,roundi=True):
+def isPrime_Lucas(p,returnNums=True,roundi=True):
     l = LucasNumber(p,roundi)
     if((l-1)%p!=0):
-        return l
+        if(returnNums):
+        	return l
+        else:
+        	return True
+    return False
 
 def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
     s = set()

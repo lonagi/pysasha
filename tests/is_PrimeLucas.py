@@ -5,13 +5,17 @@ def LucasNumber(index,roundi=True):
     if(not roundi):
         return mmmint(b)
     else:
-        return b
+        return int(b)
 
-def isPrime_Lucas(p):
-    l = LucasNumber(p,True)
+def isPrime_Lucas(p,returnNums=True,roundi=True):
+    l = LucasNumber(p,roundi)
     if((l-1)%p!=0):
-        return l
+        if(returnNums):
+            return l
+        else:
+            return True
+    return False
 
 with open("file","r") as f:
     a=f.read()
-print(isPrime_Lucas(int(a)))
+print(isPrime_Lucas(int(a),False))
