@@ -1,55 +1,72 @@
 #Sociable number
 
-def SociableNumber(num,returni=False,iteratDebug=False, NumDebug=False):
-    if(NumDebug and not returni):
-            print(num)
+#TOOLS
+def Divisors(num): 
+    from math import sqrt as mmsq
+    s=set([1])
+    i=1
+    a=int(mmsq(num)+1)
+    while i<=a: 
+        if(num//i==num):
+            i+=1
+            continue
+        if (num%i==0): 
+            if (num//i!=i): 
+                s.add(num//i)
+            s.add(i)
+        i+=1
+    return s
+###########################
+
+#Returns number and periods
+def SociableNumber(num,minIt=1,maxIt=20,sequence=False):
     num1=num
     iterat=0
-    while True:
+    if(sequence):
+        seq=[]
+    while iterat<maxIt:
         iterat+=1
+        if(sequence):
+            seq.append(num)
         
-        #Find all divisors
-        allDels = set([1])
-        for j in range( int(num/2) ,1,-1):
-            if(num%j==0):
-                allDels.add(j)
-        num = sum(allDels)
-        
-        if(iteratDebug and not NumDebug):
-            if(not returni):
-                print(iterat)
-        elif(iteratDebug and NumDebug):
-            if(not returni):
-                print("T",iterat,num)
-                
+        num = sum(Divisors(num))
         if(num==1):
-            if(returni):
-                return False
-            break
+            return False
         
         if(num1==num):
-            if(returni):
-                return (num,iterat)
-            break
-            
-def doTest(toPrint=False,start=1,toEnd=10000):
-    _temp = 0
-    allNums = set()
-    for i in range(start,toEnd):
-        _temp = SociableNumber(i,True,True,True)
-        if(_temp != False):
-            if(_temp[0] == 1):
-                continue
+            if(iterat!=minIt):
+                return False
+            if(sequence):
+                return (num,iterat,seq)
             else:
-                if(not toPrint):
-                    allNums.add(_temp)
-                else:
-                    print(_temp)
-                    
-    if(not toPrint):
-        return {tuple(sorted(item)) for item in allNums}
+                return (num,iterat)
             
-#SociableNumber(1264460,True,True,True)
-#SociableNumber(27,True,True,True)
-print(doTest())
-#doTest(True)
+def doTest(toPrint=False,toProgress=False,start=1,toEnd=1000,algo="s"):
+    s=set()
+    KK=10000
+    from IPython.display import clear_output
+    for i in range(start,toEnd+1):
+        if(toProgress and (i<KK or (i>=KK and i%(KK/100)==0))):
+            clear_output(wait=True)
+            print(i,end="\t")
+        if(algo=="s"):
+            soc=SociableNumber(i)
+        elif(algo=="Amicable"):
+            soc=SociableNumber(i,2,2)
+        elif(algo=="Perfect"):
+            soc=SociableNumber(i,1,1)
+        if(soc):
+            s.add(soc[0])
+            if(toPrint and not toProgress):
+                print(soc,end=", ")
+        if(toProgress and (i<KK or (i>=KK and i%(KK/100)==0))):
+            print(s)
+    if(not toPrint):
+        return s
+    
+#SociableNumber(1264460,1,20,True)
+#SociableNumber(1264460)
+#doTest(False,False,1,5000) #2.35 s
+
+#doTest(False,False,1,10000,"Amicable") #253 ms
+#doTest(False,False,1,20000,"Perfect") #361 ms
