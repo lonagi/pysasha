@@ -60,6 +60,10 @@ def SemiPerfectNumber(num):
         if(sum(i)==num):
             return True
     return False
+
+def HemiPerfectNumber(num):
+    dv=sum(Divisors(num))+num
+    return (dv*2/num) % 1 * 100==0 and (dv*2/num)%2!=-0
     
 def SuperPerfect(n,m=2,k=2):
     dv=sum(Divisors(n))+n
@@ -87,6 +91,8 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="perfect"):
             pf=AlmostPerfectNumber(i)
         elif(algo=="semi"):
             pf=SemiPerfectNumber(i)
+        elif(algo=="hemi"):
+            pf=HemiPerfectNumber(i)
         elif(algo=="super"):
             pf=SuperPerfect(i)
         if(pf):
@@ -104,6 +110,7 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="perfect"):
 #Quasiperfect(20)
 #AlmostPerfectNumber(32)
 #SemiPerfectNumber(12)
+#HemiPerfectNumber(24)
 #SuperPerfect(64)
 
 #doTest(True,False,0,20000) #348 ms
@@ -112,4 +119,5 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="perfect"):
 #doTest(True,False,0,20000,"quasi")
 #doTest(True,False,0,20000,"almost")
 #doTest(True,False,0,5000,"semi")
+#doTest(True,False,1,5000,"hemi")
 #doTest(True,False,0,20000,"super")
