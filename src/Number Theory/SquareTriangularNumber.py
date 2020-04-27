@@ -14,27 +14,24 @@ def SquareTriangularNumber(k,res="N",roundi=True):
         return r
 
 def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="euler"):
-    s = set()
-    KK = 10000
+    s=set()
+    KK=10000
+    from IPython.display import clear_output
     for i in range(start,toEnd+1):
-        if(toProgress and ( i < KK or (i>=KK and i % (KK/100) == 0)) ):
-            try:
-                from IPython.display import clear_output
-            except:
-                pass
+        if(toProgress and (i<KK or (i>=KK and i%(KK/100)==0))):
             clear_output(wait=True)
             print(i,end="\t")
         if(algo=="euler"):
-            sqrnn = SquareTriangularNumber(i)
+            sqrnn=SquareTriangularNumber(i)
         if(algo=="t"):
-            sqrnn = SquareTriangularNumber(i,"t")
+            sqrnn=SquareTriangularNumber(i,"t")
         if(algo=="s"):
-            sqrnn = SquareTriangularNumber(i,"s")
+            sqrnn=SquareTriangularNumber(i,"s")
         if(sqrnn):
             s.add(sqrnn)
             if(toPrint and not toProgress):
                 print(sqrnn,end=", ")
-        if(toProgress and ( i < KK or (i>=KK and i % (KK/100) == 0)) ):
+        if(toProgress and (i<KK or (i>=KK and i%(KK/100)==0))):
             print(s)
     if(not toPrint):
         return s    
