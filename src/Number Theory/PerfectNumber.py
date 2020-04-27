@@ -44,6 +44,8 @@ def AbundantNumber(num):
     return sum(Divisors(num))>num
 def DeficientNumber(num):
     return sum(Divisors(num))<num
+def QuasiPerfectNumber(num):
+    return sum(Divisors(num))-num==1
     s = set()
     KK = 10000
     for i in range(start,toEnd):
