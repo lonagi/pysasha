@@ -1,12 +1,11 @@
 def getGoldenRatio():
-    return((5**(1/2)) + 1)/2
+    from math import sqrt as mmmsqr
+    return((mmmsqr(5))+1)/2
 
 def GoldenNumber(index=1,Pair=False,roundi=True):
-    try:
-        from sympy import Pow as mmmpow
-    except:
-        pass
-    q = 5**(1/2)
+    from sympy import Pow as mmmpow
+    from math import sqrt as mmmsqr
+    q = mmmsqr(5)
     pp = getGoldenRatio()
     r = ((mmmpow(pp,index) - mmmpow(-pp,-index))/q)
     if(roundi):
@@ -35,32 +34,29 @@ def NextGoldenNumber(Golden,Pair=False,roundi=True):
             return r
 
 def GoldenFractions(toEnd=100):
-    pp = getGoldenRatio()
+    pp=getGoldenRatio()
     for i in range(1,toEnd):
-        a = i*pp
+        a=i*pp
         if(a%1 *100 <10):
             print((int(a),i),end=', ')
             
 def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
-    s = set()
-    KK = 10000
+    s=set()
+    KK=10000
+    from IPython.display import clear_output
     for i in range(start,toEnd+1):
-        if(toProgress and ( i < KK or (i>=KK and i % (KK/100) == 0)) ):
-            try:
-                from IPython.display import clear_output
-            except:
-                pass
+        if(toProgress and (i<KK or (i>=KK and i%(KK/100)==0))):
             clear_output(wait=True)
             print(i,end="\t")
         if(algo=="s"):
-            gold = GoldenNumber(i)
+            gold=GoldenNumber(i)
         elif(algo=="pairs"):
-            gold = GoldenNumber(i,True)
+            gold=GoldenNumber(i,True)
         if(gold):
             s.add(gold)
             if(toPrint and not toProgress):
                 print(gold,end=", ")
-        if(toProgress and ( i < KK or (i>=KK and i % (KK/100) == 0)) ):
+        if(toProgress and (i<KK or (i>=KK and i%(KK/100)==0))):
             print(s)
     if(not toPrint):
         return s
