@@ -40,44 +40,52 @@ def _makeSett(comb):
 
 ##THE PROGRAM
 def PerfectNumber(num):
+    return sum(Divisors(num))==num
+
 def AbundantNumber(num):
     return sum(Divisors(num))>num
+
 def DeficientNumber(num):
     return sum(Divisors(num))<num
+
 def QuasiPerfectNumber(num):
     return sum(Divisors(num))-num==1
+
 def AlmostPerfectNumber(num):
     return sum(Divisors(num))-num==-1
+
 def SemiPerfectNumber(num):
     dv=sorted(Divisors(num))
     for i in _makeSett(dv):
         if(sum(i)==num):
             return True
     return False
+    
 def SuperPerfect(n,m=2,k=2):
     dv=sum(Divisors(n))+n
     for i in range(m-1):
         dv=sum(Divisors(dv))+dv
     return dv==k*n
+
+def doTest(toPrint=False,start=2,toEnd=1000):
     s = set()
-    KK = 10000
     for i in range(start,toEnd):
-        if(toProgress and ( i < KK or (i>=KK and i % (KK/100) == 0)) ):
-            try:
-                from IPython.display import clear_output
-            except:
-                pass
-            clear_output(wait=True)
-            print(i,end="\t")
-        if((PerfectNumber(i) and isPerfect) or (not PerfectNumber(i) and not isPerfect) ):
+        if(isAlmostPerfectNumber(i)):
             s.add(i)
-            if(toPrint and not toProgress):
-                print(i,end=", ")
-        if(toProgress and ( i < KK or (i>=KK and i % (KK/100) == 0)) ):
-            print(s)
-    if(not toPrint):
+    if(toPrint):
+        print(s)
+    else:
         return s
-            
-doTest(True,True,True,2,20000) #All perfect numbers
-print("")
-doTest(True,False,False,2,10000) #All non perfect numbers
+
+#isAlmostPerfectNumber(i)
+#findSuperPerfectNumbers()
+#findAllSuperPerfectNumbers()
+
+
+#PerfectNumber(28)
+#AbundantNumber(18)
+#DeficientNumber(23)
+#Quasiperfect(20)
+#AlmostPerfectNumber(32)
+#SemiPerfectNumber(12)
+#SuperPerfect(64)
