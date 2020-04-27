@@ -2,15 +2,18 @@
 
 #TOOLs
 def Divisors(num): 
-    s=set()
+    from math import sqrt as mmsq
+    s=set([1])
     i=1
-    a=num**(1/2)
+    a=int(mmsq(num)+1)
     while i<=a: 
+        if(num//i==num):
+            i+=1
+            continue
         if (num%i==0): 
-            if (num/i==i): 
-                s.add(i)
-            else: 
-                s.add(i)
+            if (num//i!=i): 
+                s.add(num//i)
+            s.add(i)
         i+=1
     return s
 def PerfectNumber(num):
@@ -23,9 +26,10 @@ def ErdosNicolas_Number(num):
         s=list(Divisors(num))
         s.sort()
         for i in s:
-            if(sum(s)<num):
+            summa=sum(s)
+            if(summa<num):
                 break
-            elif(sum(s)==num):
+            elif(summa==num):
                 return True
             s.pop()
         return False
@@ -35,22 +39,19 @@ def ErdosNicolas_Number(num):
 def doTest(toPrint=False,toProgress=False,start=2,toEnd=1000):
     s = set()
     KK = 10000
+    from IPython.display import clear_output
     for i in range(start,toEnd+1):
-        if(toProgress and ( i < KK or (i>=KK and i % (KK/100) == 0)) ):
-            try:
-                from IPython.display import clear_output
-            except:
-                pass
+        if(toProgress and (i<KK or (i>=KK and i%(KK/100)==0))):
             clear_output(wait=True)
             print(i,end="\t")
-        if(ErdosNicolas_Number(i) ):
+        if(ErdosNicolas_Number(i)):
             s.add(i)
             if(toPrint and not toProgress):
                 print(i,end=", ")
-        if(toProgress and ( i < KK or (i>=KK and i % (KK/100) == 0)) ):
+        if(toProgress and (i<KK or (i>=KK and i%(KK/100)==0))):
             print(s)
     if(not toPrint):
         return s
     
 #print(ErdosNicolas_Number(24))
-doTest(True,False,2,43000)
+#doTest(True,False,2,43000)

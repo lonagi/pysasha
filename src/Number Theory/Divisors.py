@@ -2,15 +2,18 @@
 
 #Find All divisors for your number
 def Divisors(num): 
-    s=set()
+    from math import sqrt as mmsq
+    s=set([1])
     i=1
-    a=num**(1/2)
+    a=int(mmsq(num)+1)
     while i<=a: 
+        if(num//i==num):
+            i+=1
+            continue
         if (num%i==0): 
-            if (num/i==i): 
-                s.add(i)
-            else: 
-                s.add(i)
+            if (num//i!=i): 
+                s.add(num//i)
+            s.add(i)
         i+=1
     return s
 
