@@ -1,19 +1,45 @@
 #Find Perfect Numbers
 
 ##TOOLS
-def Divisors(num):
-    s = set([1])
-    for i in range( int(num/2 + 1),1,-1):
-        if(i!=num and num%i==0):
+def Divisors(num): 
+    from math import sqrt as mmsq
+    s=set([1])
+    i=1
+    a=int(mmsq(num)+1)
+    while i<=a: 
+        if(num//i==num):
+            i+=1
+            continue
+        if (num%i==0): 
+            if (num//i!=i): 
+                s.add(num//i)
             s.add(i)
+        i+=1
     return s
+def _makeSett(comb):
+    a=comb
+    b=set()
+    k=0
+    for j in range(1,len(a)*2):
+        a=comb.copy()
+        for i in range(0,len(a)):
+            b.add(tuple(a[i::j]))
+        for i in range(0,len(a)-1):
+            b.add(tuple(a[i::-1*j]))
+        for i in range(0,len(a)):
+            b.add(tuple(a[i:len(a)-j:j]))
+        for i in range(0,len(a)-1):
+            b.add(tuple(a[i:len(a)-j:-1*j]))
+        try:
+            a.pop(j-1)
+        except:
+            pass
+        b.add(tuple(a))
+    return b
+############################
 
 ##THE PROGRAM
 def PerfectNumber(num):
-    d = Divisors(num)
-    return sum(d)==num
-             
-def doTest(toPrint=False,isPerfect=True,toProgress=False,start=2,toEnd=1000):
     s = set()
     KK = 10000
     for i in range(start,toEnd):
