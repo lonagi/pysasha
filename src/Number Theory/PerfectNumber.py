@@ -54,6 +54,11 @@ def SemiPerfectNumber(num):
         if(sum(i)==num):
             return True
     return False
+def SuperPerfect(n,m=2,k=2):
+    dv=sum(Divisors(n))+n
+    for i in range(m-1):
+        dv=sum(Divisors(dv))+dv
+    return dv==k*n
     s = set()
     KK = 10000
     for i in range(start,toEnd):
