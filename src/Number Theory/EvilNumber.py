@@ -15,7 +15,7 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000):
         if(evil):
             s.add(i)
             if(toPrint and not toProgress):
-                print(evil,end=", ")
+                print(i,end=", ")
         if(toProgress and (i<KK or (i>=KK and i%(KK/100)==0))):
             print(s)
     if(not toPrint):
