@@ -48,6 +48,12 @@ def QuasiPerfectNumber(num):
     return sum(Divisors(num))-num==1
 def AlmostPerfectNumber(num):
     return sum(Divisors(num))-num==-1
+def SemiPerfectNumber(num):
+    dv=sorted(Divisors(num))
+    for i in _makeSett(dv):
+        if(sum(i)==num):
+            return True
+    return False
     s = set()
     KK = 10000
     for i in range(start,toEnd):
