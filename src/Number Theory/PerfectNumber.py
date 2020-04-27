@@ -67,20 +67,36 @@ def SuperPerfect(n,m=2,k=2):
         dv=sum(Divisors(dv))+dv
     return dv==k*n
 
-def doTest(toPrint=False,start=2,toEnd=1000):
-    s = set()
-    for i in range(start,toEnd):
-        if(isAlmostPerfectNumber(i)):
+def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="perfect"):
+    s=set()
+    KK=10000
+    from IPython.display import clear_output
+    for i in range(start,toEnd+1):
+        if(toProgress and (i<KK or (i>=KK and i%(KK/100)==0))):
+            clear_output(wait=True)
+            print(i,end="\t")
+        if(algo=="perfect"):
+            pf=PerfectNumber(i)
+        elif(algo=="abundant"):
+            pf=AbundantNumber(i)
+        elif(algo=="deficient"):
+            pf=DeficientNumber(i)
+        elif(algo=="quasi"):
+            pf=Quasiperfect(i)
+        elif(algo=="almost"):
+            pf=AlmostPerfectNumber(i)
+        elif(algo=="semi"):
+            pf=SemiPerfectNumber(i)
+        elif(algo=="super"):
+            pf=SuperPerfect(i)
+        if(pf):
             s.add(i)
-    if(toPrint):
-        print(s)
-    else:
+            if(toPrint and not toProgress):
+                print(i,end=", ")
+        if(toProgress and (i<KK or (i>=KK and i%(KK/100)==0))):
+            print(s)
+    if(not toPrint):
         return s
-
-#isAlmostPerfectNumber(i)
-#findSuperPerfectNumbers()
-#findAllSuperPerfectNumbers()
-
 
 #PerfectNumber(28)
 #AbundantNumber(18)
@@ -89,3 +105,11 @@ def doTest(toPrint=False,start=2,toEnd=1000):
 #AlmostPerfectNumber(32)
 #SemiPerfectNumber(12)
 #SuperPerfect(64)
+
+#doTest(True,False,0,20000) #348 ms
+#doTest(True,False,0,20000,"abundant")
+#doTest(True,False,0,20000,"deficient")
+#doTest(True,False,0,20000,"quasi")
+#doTest(True,False,0,20000,"almost")
+#doTest(True,False,0,5000,"semi")
+#doTest(True,False,0,20000,"super")
