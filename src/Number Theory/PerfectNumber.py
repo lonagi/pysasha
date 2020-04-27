@@ -16,26 +16,6 @@ def Divisors(num):
             s.add(i)
         i+=1
     return s
-def _makeSett(comb):
-    a=comb
-    b=set()
-    k=0
-    for j in range(1,len(a)*2):
-        a=comb.copy()
-        for i in range(0,len(a)):
-            b.add(tuple(a[i::j]))
-        for i in range(0,len(a)-1):
-            b.add(tuple(a[i::-1*j]))
-        for i in range(0,len(a)):
-            b.add(tuple(a[i:len(a)-j:j]))
-        for i in range(0,len(a)-1):
-            b.add(tuple(a[i:len(a)-j:-1*j]))
-        try:
-            a.pop(j-1)
-        except:
-            pass
-        b.add(tuple(a))
-    return b
 ############################
 
 ##THE PROGRAM
@@ -54,12 +34,26 @@ def QuasiPerfectNumber(num):
 def AlmostPerfectNumber(num):
     return sum(Divisors(num))-num==-1
 
-def SemiPerfectNumber(num):
-    dv=sorted(Divisors(num))
-    for i in _makeSett(dv):
-        if(sum(i)==num):
-            return True
-    return False
+def SemiPerfectNumber(n):
+    factors = Divisors(n)
+    if(sum(factors)==n):
+        return True
+    factors = list(factors)[:-1]
+    num_factors = len(factors)
+    subset = [[0 for i in range(n + 1)]for j in range(num_factors + 1)]
+    for i in range(num_factors + 1):
+        subset[i][0]= True
+    for i in range(1, n + 1):
+        subset[0][i] = False
+    for i in range(1, num_factors + 1):
+        for j in range(1, n + 1):
+            if j < factors[i - 1]:
+                subset[i][j] = subset[i - 1][j]
+            else:
+                subset[i][j] = subset[i - 1][j] or subset[i - 1][j - factors[i - 1]]
+    if subset[num_factors][n] == 0:
+        return False
+    return True
 
 def HemiPerfectNumber(num):
     dv=sum(Divisors(num))+num
