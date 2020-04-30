@@ -15,11 +15,13 @@ def __pow(x,n,I):
         return y
 
 def FibonacciNumber(index):
+def MatrixFibonacci(index):
     F = __pow(np.array(((1,1),(1,0)),dtype=object),index,np.eye(2))
     return F[0][1]
 
 def MatrixFibonacci2(index):
     return np.linalg.matrix_power(np.matrix(((1,1),(1,0)),dtype=object),index)[0,1]
+
 def RecursionFibonacci(index): 
     if index==1: 
         return 0
@@ -41,10 +43,11 @@ def IterationFibonacci(index):
             a=b 
             b=c 
         return b
+
 def Binetformula(index,roundi=True):
     from sympy import Pow as mmmpow
     from sympy import Integer as mmmint
-    from sympy import N as 
+    from sympy import N as mmmn
     b = (mmmpow(1.6185,index)-mmmpow(-0.6185,index))/2.237
     if(not roundi):
         return mmmint(b)
