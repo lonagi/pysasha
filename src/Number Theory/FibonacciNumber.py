@@ -18,6 +18,8 @@ def FibonacciNumber(index):
     F = __pow(np.array(((1,1),(1,0)),dtype=object),index,np.eye(2))
     return F[0][1]
 
+def MatrixFibonacci2(index):
+    return np.linalg.matrix_power(np.matrix(((1,1),(1,0)),dtype=object),index)[0,1]
 def RecursionFibonacci(index): 
     if index==1: 
         return 0
