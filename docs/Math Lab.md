@@ -371,5 +371,21 @@ df
 
 
 ```python
+plt.plot([1,2,3])
+```
+
+
+
+
+    [<matplotlib.lines.Line2D at 0x7f036f9e4588>]
+
+
+
+
+![png](output_7_1.png)
+
+
+
+```python
 
 ```
