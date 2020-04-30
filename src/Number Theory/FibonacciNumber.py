@@ -18,6 +18,14 @@ def FibonacciNumber(index):
     F = __pow(np.array(((1,1),(1,0)),dtype=object),index,np.eye(2))
     return F[0][1]
 
+def RecursionFibonacci(index): 
+    if index==1: 
+        return 0
+    elif index==2: 
+        return 1
+    else: 
+        return RecursionFibonacci(index-1)+RecursionFibonacci(index-2) 
+
 def IterationFibonacci(index): 
     a=0
     b=1
