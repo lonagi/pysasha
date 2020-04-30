@@ -18,6 +18,19 @@ def FibonacciNumber(index):
     F = __pow(np.array(((1,1),(1,0)),dtype=object),index,np.eye(2))
     return F[0][1]
 
+def IterationFibonacci(index): 
+    a=0
+    b=1
+    if index == 0: 
+        return a 
+    elif index == 1: 
+        return b 
+    else: 
+        for i in range(2,index): 
+            c=a+b 
+            a=b 
+            b=c 
+        return b
 def Binetformula(index,roundi=True):
     from sympy import Pow as mmmpow
     from sympy import Integer as mmmint
