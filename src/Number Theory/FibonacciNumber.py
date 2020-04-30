@@ -14,7 +14,6 @@ def __pow(x,n,I):
             y = x.dot(y)
         return y
 
-def FibonacciNumber(index):
 def MatrixFibonacci(index):
     F = __pow(np.array(((1,1),(1,0)),dtype=object),index,np.eye(2))
     return F[0][1]
@@ -68,9 +67,13 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
             clear_output(wait=True)
             print(i,end="\t")
         if(algo=="s"):
-            fibon=FibonacciNumber(i)
+            fibon=MatrixFibonacci(i)
         elif(algo=="binet"):
             fibon=Binetformula(i)
+        elif(algo=="iterat"):
+            fibon=IterationFibonacci(i)
+        elif(algo=="recursive"):
+            fibon=RecursionFibonacci(i)
         if(fibon):
             s.add(fibon)
             if(toPrint and not toProgress):
@@ -82,11 +85,14 @@ def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
     
 def CheckExists(toend=10000):
     for i in {Binetformula(i) for i in range(toend) if i!=0}:
-	    if(not isFibonacci(i)):
-	        print(i,end=", ")
+        if(not isFibonacci(i)):
+            print(i,end=", ")
             
 
-#FibonacciNumber(8)
+#RecursionFibonacci(9)
+#IterationFibonacci(9)
+#MatrixFibonacci(8)
+#MatrixFibonacci2(8)
 #Binetformula(7)
 #isFibonacci(13)
 #doTest(True,False,1,5000) #823 ms
