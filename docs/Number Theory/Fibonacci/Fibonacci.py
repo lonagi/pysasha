@@ -124,9 +124,6 @@ for i in range(15,40):
 # | 24 | 10 секунд |
 # | 25 | 16.97 секунд |
 
-# In[392]:
-
-
 def drawPlot(ss,title="Скорости",y="Секунд",x="Номер итерации"):
     fig,ax=plt.subplots(figsize=(6,6))
     ax.set_facecolor("#F2F2F2")
