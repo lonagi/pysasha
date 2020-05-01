@@ -43,6 +43,22 @@ def IterationFibonacci(index):
             b=c 
         return b
 
+def IterationFibonacciSequence(indexLimit): 
+    a=0
+    b=1
+    seq=[0,1]
+    if indexLimit == 0: 
+        return a 
+    elif indexLimit == 1: 
+        return [a,b] 
+    else: 
+        for i in range(2,indexLimit): 
+            c=a+b 
+            a=b 
+            b=c 
+            seq.append(b)
+        return seq
+
 def Binetformula(index,roundi=True):
     from sympy import Pow as mmmpow
     from sympy import Integer as mmmint
