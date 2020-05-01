@@ -109,6 +109,9 @@ def CheckExists(toend=10000):
         if(not isFibonacci(i)):
             print(i,end=", ")
             
+def FibonacciWord(index):
+    from math import floor as mmmfloor
+    return ((mmmfloor(index*1.618)-mmmfloor((index+1)*1.618))+2)
 
 #RecursionFibonacci(9)
 #IterationFibonacci(9)
