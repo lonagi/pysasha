@@ -109,6 +109,16 @@ def CheckExists(toend=10000):
         if(not isFibonacci(i)):
             print(i,end=", ")
             
+def IterationFibonacciWord(index):
+    Sn_1 = "0"
+    Sn = "01"
+    tmp = "" 
+    for i in range(2, index + 1): 
+        tmp = Sn
+        Sn += Sn_1 
+        Sn_1 = tmp 
+    return Sn 
+
 def FibonacciWord(index):
     from math import floor as mmmfloor
     return ((mmmfloor(index*1.618)-mmmfloor((index+1)*1.618))+2)
