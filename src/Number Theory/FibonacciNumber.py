@@ -119,6 +119,18 @@ def IterationFibonacciWord(index):
         Sn_1 = tmp 
     return Sn 
 
+def IterationFibonacciWords(indexLimit):
+    Sn_1="0"
+    Sn="01"
+    tmp="" 
+    word=[Sn_1,Sn]
+    for i in range(2, indexLimit + 1): 
+        tmp=Sn
+        Sn+=Sn_1 
+        Sn_1=tmp 
+        word.append(Sn)
+    return word
+
 def FibonacciWord(index):
     from math import floor as mmmfloor
     return ((mmmfloor(index*1.618)-mmmfloor((index+1)*1.618))+2)
