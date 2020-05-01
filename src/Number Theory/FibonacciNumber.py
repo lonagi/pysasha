@@ -74,6 +74,11 @@ def isFibonacci(num):
     a = 2.07684408521711*mlog(2.237*num)
     return (a % 1 * 100 > 90) or (a % 1 * 100 < 5)
 
+def isFibonacci2(num):
+    from math import log as mlog
+    a=(mlog(( (num*5**(1/2)+(5*num**2 + 4)**(1/2))/2 ),1.618)+mlog(( (num*5**(1/2)+(5*num**2 - 4)**(1/2))/2 ),1.618))/2
+    return (a % 1 * 100 > 99) or (a % 1 * 100 < 1)
+
 def doTest(toPrint=False,toProgress=False,start=0,toEnd=1000,algo="s"):
     s=set()
     KK=10000
