@@ -1537,7 +1537,6 @@ while j<17:
 Если есть желание прочитать статью на другом источнике, то пожалуйста, вот ниже ссылки:
 
 [ВКонтакте](vk.com/@lonagi-fibonachchi-issledovanie)  
-[Lonagi](https://vk.com/lonagi)  
 [Instagram](https://vk.com/lonagi)    
 [Facebook](https://vk.com/lonagi)    
 [Github](https://github.com/lonagi/pysasha/blob/master/docs/Number%20Theory/Fibonacci/Fibonacci.md)  
