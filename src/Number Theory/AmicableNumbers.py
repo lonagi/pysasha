@@ -34,7 +34,7 @@ def AmicableNumber(k,returni=False):
     
     ###Second number is greater than first number
     from itertools import chain
-    concatenated = chain( range(k, int(k*2.5)+1 ),range(k, int(k/3)+1 ,-1) )
+    concatenated = chain( range(k, int(k*1.6)+1 ),range(k, int(k/1.6)+1 ,-1) )
     for i in concatenated:
 
         ###We don't want repeat operations
