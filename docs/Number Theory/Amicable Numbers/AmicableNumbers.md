@@ -160,19 +160,6 @@ df
 ```
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -655,6 +642,8 @@ for i in range(15):
             time.sleep(0.01) # Чтобы не терять рисунок
 ```
 
+![png](rose.png)
+
 Получилось что-то типа розочки )))  
   
 А теперь посмотрим на динамический угол!
@@ -677,6 +666,8 @@ for i in range(15):
         if(i>10):
             time.sleep(0.04) # Чтобы не терять рисунок
 ```
+
+![png](rose2.png)
 
 В целом криво получается при динамике, но уже более менее красивый рисунок при среднем значении отношений дружественных чисел.   
 Хотя мы представляем эти пары как друзей, так или иначе в древности они вызывали ассоциацию и с любовной парой. Поэтому, забавно, что рисунок спирали похож на розу.
