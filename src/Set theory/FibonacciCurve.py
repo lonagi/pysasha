@@ -1,4 +1,6 @@
 from IPython.core.interactiveshell import InteractiveShell
+import ipyturtle as turtle
+import time
 InteractiveShell.ast_node_interactivity = "all"
 
 def IterationFibonacciWord(index):
