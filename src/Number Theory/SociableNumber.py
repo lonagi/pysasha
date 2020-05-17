@@ -40,6 +40,26 @@ def SociableNumber(num,minIt=1,maxIt=20,sequence=False):
                 return (num,iterat,seq)
             else:
                 return (num,iterat)
+
+def _SociableNumber(num,sequence=False):
+    num1=num
+    iterat=0
+    if(sequence):
+        seq=[]
+    while True:
+        iterat+=1
+        if(sequence):
+            seq.append(num)
+        
+        num = sum(Divisors(num))
+        if(num==1):
+            return False
+        
+        if(num1==num):
+            if(sequence):
+                return (num,iterat,seq)
+            else:
+                return (num,iterat)
             
 def doTest(toPrint=False,toProgress=False,start=1,toEnd=1000,algo="s"):
     s=set()
@@ -50,7 +70,7 @@ def doTest(toPrint=False,toProgress=False,start=1,toEnd=1000,algo="s"):
             clear_output(wait=True)
             print(i,end="\t")
         if(algo=="s"):
-            soc=SociableNumber(i)
+            soc=_SociableNumber(i)
         elif(algo=="Amicable"):
             soc=SociableNumber(i,2,2)
         elif(algo=="Perfect"):
