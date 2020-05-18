@@ -60,6 +60,20 @@ def _SociableNumber(num,sequence=False):
                 return (num,iterat,seq)
             else:
                 return (num,iterat)
+
+def findSociableNumbers(countt):
+    komp=[]
+    per=[]
+    i=0
+    while len(komp)<countt:
+        i+=1
+        for j in range(1,6):
+            if(SociableNumber(i,j)):
+                komp.append(i)
+                per.append(j)
+                break
+    return (komp,per)
+            
             
 def doTest(toPrint=False,toProgress=False,start=1,toEnd=1000,algo="s"):
     s=set()
