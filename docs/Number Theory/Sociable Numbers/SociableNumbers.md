@@ -1782,8 +1782,7 @@ for i in range(15):
 
 Если есть желание прочитать статью на другом источнике, то пожалуйста, вот ниже ссылки:
     
-[ВКонтакте](vk.com)  
-[Instagram]()    
+[ВКонтакте](vk.com/@lonagi-kompaneiskie-chisla-issledovanie)
 [Facebook](https://www.facebook.com/%D0%97%D0%B0%D0%BD%D0%B8%D0%BC%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D0%BC%D0%B0%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0-%D0%BE%D1%82-Lonagi-112410007105730)    
 [Github](https://github.com/lonagi/pysasha/blob/master/docs/Number%20Theory/Sociable%20Numbers/SociableNumbers.md)  
 
