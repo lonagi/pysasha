@@ -39,7 +39,7 @@ def drawPlot(ss,title="Скорости",y="Секунд",x="Номер итер
 # In[ ]:
 
 
-Image(url="https://sun9-46.userapi.com/c858036/v858036072/1e3bba/s6JwXFoOgLM.jpg", width=400)
+Image(url="https://sun1-92.userapi.com/PBUS51pFNY-XwsB811CUdZtLWQkFnZ6f8xVQGg/Sm3I9V-uiuA.jpg", width=400)
 
 
 # Компанейские числа?  
