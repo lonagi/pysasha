@@ -75,4 +75,4 @@ def doTest(toPrint=False,toProgress=False,start=1,toEnd=1000,algo="bf"):
                 
 #BetrothedNumber(48)
 #BetrothedNumbers(140,195)
-doTest()
+#doTest()
